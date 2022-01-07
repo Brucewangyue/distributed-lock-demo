@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.w.serverorder.dao.OrderDao">
+    <select id="selectByOrderId" resultType="Order">
+        select *
+        from `order`
+        where orderId = #{orderId}
+    </select>
+
+    <insert id="insert" parameterType="Order">
+        insert into `order`
+        values (#{orderId}, #{belongDriverId})
+    </insert>
+
+    <update id="update" parameterType="Order">
+        update `order` set belongDriverId= #{belongDriverId}
+        where orderId = #{orderId}
+    </update>
+</mapper>

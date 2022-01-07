@@ -1,0 +1,20 @@
+# 应用名称
+spring:
+  application:
+    name: eureka-server
+# 应用服务 WEB 访问端口
+  server:
+    port: 8080
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka/
+    fetch-registry: false
+    register-with-eureka: false
+  server:
+    #关闭自我保护
+    enable-self-preservation: false
+    #清理间隔时间
+    eviction-interval-timer-in-ms: 5000
+
+

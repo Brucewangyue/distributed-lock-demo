@@ -1,0 +1,33 @@
+# 应用名称
+spring:
+  application:
+    name: server-order
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 123
+    url: jdbc:mysql://10.0.0.193:3306/test
+  redis:
+    database: 0
+    host: 192.168.177.99
+    port: 6379
+    timeout: 2000
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka0:8080/eureka/
+
+mybatis:
+  mapper-locations: classpath:mappers/*xml
+  type-aliases-package: com.w.serverorder.entity
+---
+server:
+  port: 8004
+spring:
+  profiles: 8004
+---
+server:
+  port: 8005
+spring:
+  profiles: 8005
