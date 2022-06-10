@@ -17,11 +17,14 @@ import java.util.function.Supplier;
 @Data
 public class MysqlDistributeLock extends AbstractLock {
 
+    // todo 设计一张common_lock表来存储所有锁记录
     public ThreadLocal<Supplier<Boolean>> lockSupplier = new ThreadLocal<>();
     public ThreadLocal<Supplier<Boolean>> unLockSupplier = new ThreadLocal<>();
 
     @Override
     public void lock() {
+        // todo 锁重入判断，增加当前线程重入次数变量
+
         if (tryLock()) {
             System.out.println("加锁成功!");
             return;
@@ -33,6 +36,8 @@ public class MysqlDistributeLock extends AbstractLock {
             e.printStackTrace();
         }
 
+        //todo 修改重试策略：重试一定次数后退出，增加重试次数变量
+        //todo 修改重试策略：重试一定时长后退出，增加重试累计时长和重试时长阈值变量
         // 递归等待锁
         lock();
     }

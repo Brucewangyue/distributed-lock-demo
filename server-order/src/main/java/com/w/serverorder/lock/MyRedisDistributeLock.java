@@ -50,7 +50,7 @@ public class MyRedisDistributeLock extends AbstractLock {
             e.printStackTrace();
         }
 
-        // 递归等待锁
+        // 递归等待锁，加锁不成功递归继续非公平抢锁
         lock();
     }
 
